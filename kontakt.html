@@ -33,14 +33,26 @@
   <p>Telefon: <a href="tel:015780695048">015780695048</a> · E‑Mail: <a href="mailto:info@smartgemacht-emden.de">info@smartgemacht-emden.de</a></p>
 </header>
 
-<form class="form card" style="max-width:560px;margin:24px auto" onsubmit="event.preventDefault();alert('Demo-Form: Bitte Endpoint hinterlegen.');">
-  <label><span>Name</span><input type="text" placeholder="Max Mustermann" required></label>
-  <label><span>E‑Mail</span><input type="email" placeholder="max@mail.de" required></label>
-  <label><span>Nachricht</span><textarea rows="5" placeholder="Worum geht's?" required></textarea></label>
+<form class="form card" style="max-width:560px;margin:24px auto"
+      action="https://formsubmit.co/info@smartgemacht-emden.de" method="POST">
+  <label><span>Name</span>
+    <input name="name" type="text" placeholder="Max Mustermann" required>
+  </label>
+  <label><span>E-Mail</span>
+    <input name="email" type="email" placeholder="info@smartgemacht-emden.de" required>
+  </label>
+  <label><span>Nachricht</span>
+    <textarea name="message" rows="5" placeholder="Worum geht's?" required></textarea>
+  </label>
+
+  <!-- optional nice-to-have -->
+  <input type="hidden" name="_subject"  value="Neue Anfrage über SmartGemacht">
+  <input type="hidden" name="_template" value="table">
+  <!-- <input type="hidden" name="_next" value="https://deine-domain.de/danke.html"> -->
+
   <button class="btn primary" type="submit">Senden</button>
 </form>
 
-  </main>
   
 <footer>
   <div class="container">
