@@ -38,3 +38,41 @@ img.responsive { width:100%; height:256px; object-fit:cover; border-radius:16px;
 .form input:focus, .form textarea:focus { border-color: var(--brand-400); box-shadow: 0 0 0 3px var(--brand-100); }
 .badge { display:inline-block; padding:6px 10px; border-radius:999px; background:var(--brand-50); border:1px solid var(--brand-100); color: var(--brand-700); font-size:12px; }
 .logo-img { width:40px; height:40px; border-radius:12px; object-fit:contain; display:block; }
+/* --- Mobile Pack (kopier ans Ende von styles.css) --- */
+
+/* 0) Basics: iOS-Zoom verhindern, Buttons als echte Touch Targets */
+html, body { -webkit-text-size-adjust: 100%; }
+.btn { min-height: 44px; padding: 12px 18px; }
+
+/* 1) Platz unterm Content, damit die feste CTA-Bar nix überdeckt */
+@media (max-width: 640px) {
+  main { padding: 32px 12px 120px; } /* extra bottom padding für die fixe Leiste */
+
+  /* 2) Navbar entspannt umbrechen & gut tappbar machen */
+  .nav { height: auto; flex-wrap: wrap; gap: 8px 12px; padding: 8px 0; }
+  .nav a { display: inline-block; padding: 8px 10px; margin-left: 0; font-size: 16px; }
+
+  /* Logo & Brand kompakter */
+  .brand { gap: 8px; }
+  .logo, .logo-img { width: 32px; height: 32px; border-radius: 10px; }
+
+  /* 3) Headline & Copy responsive */
+  .hero h1 { font-size: clamp(24px, 6vw, 36px); }
+  .hero p  { font-size: 16px; }
+
+  /* 4) Grids einkolumnig */
+  .grid-2 { grid-template-columns: 1fr; }
+
+  /* 5) Inputs groß genug → iOS zoomt nicht rein */
+  .form input, .form textarea { font-size: 16px; }
+
+  /* 6) CTA-Bar safe über der iPhone-Homeleiste (Notch) */
+  .cta-inner { gap: 12px; padding: 10px 12px; }
+  .cta-bar { bottom: calc(16px + env(safe-area-inset-bottom)); }
+}
+
+/* 7) Kleinere Phones: Buttons nebeneinander, aber flexibel */
+@media (max-width: 480px) {
+  .cta-inner { flex-wrap: wrap; }
+  .cta-inner .btn { flex: 1 1 140px; justify-content: center; }
+}
